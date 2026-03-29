@@ -1,70 +1,112 @@
-<h1 align="center">🔗 LangChain Practice Repository</h1>
-<h3 align="center">
-  Hands-on experiments with LangChain, LLMs, tools, and local/remote model backends
-</h3>
+# 🔗 LangChain Practice Repository
 
-<h3 align="left">📌 About This Repository</h3>
-<p align="left">
-  This repository focuses on practical experimentation with <b>LangChain</b> for building
-  LLM-powered applications. It includes examples for chat interfaces, tool calling,
-  OpenAI-based workflows, and local model usage (Ollama). The goal is to understand
-  how agents, chains, and tools work together in real-world applications.
-</p>
+Hands-on experiments with LangChain, LLMs, tools, agents, and local/remote model backends.
 
-<h3 align="left">🎯 What’s Covered</h3>
-<ul>
-  <li>🧠 LLM-powered chat applications using LangChain</li>
-  <li>🔧 Tool creation and tool-calling workflows</li>
-  <li>🔑 Secure API key usage via environment variables</li>
-  <li>🖥️ Local LLM experimentation (Ollama)</li>
-  <li>🧪 Practice scripts for understanding chains and agents</li>
-</ul>
+---
 
-<h3 align="left">📂 Key Files</h3>
-<ul>
-  <li><code>main.py</code> – Entry point for LangChain experiments</li>
-  <li><code>chatai.py</code> – Chat-based LLM interaction examples</li>
-  <li><code>tools.py</code> – Custom tool definitions</li>
-  <li><code>tools_practice.py</code> – Tool usage and experimentation</li>
-  <li><code>test_ollama.py</code> – Local LLM testing with Ollama</li>
-  <li><code>openapi.py</code> – OpenAI/LangChain API interaction examples</li>
-</ul>
+## 📁 Project Structure
 
-<h3 align="left">⚙️ Skills & Technologies Used</h3>
-<p align="left">
-  <!-- Core Language -->
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-       alt="python" width="40" height="40"/>
+```
+langchain/
+├── langchain_agent/        # Full AI Agent with 6 tools + memory
+│   ├── agent.py            # Main agent + chat loop
+│   ├── tools.py            # All 6 custom tools
+│   ├── test_tools.py       # Test tools without API key
+│   └── requirements.txt    # Dependencies
+│
+├── main.py                 # Entry point for LangChain experiments
+├── chatai.py               # Chat-based LLM interaction (Streamlit)
+├── tools.py                # Custom tool definitions
+├── tools_practice.py       # Tool usage and experimentation
+├── test_ollama.py          # Local LLM testing with Ollama
+├── openapi.py              # OpenAI / LangChain API examples
+└── .gitignore
+```
 
-  <!-- LLM / AI -->
-  <img src="https://avatars.githubusercontent.com/u/126733545?s=200&v=4"
-       alt="langchain" width="40" height="40"/>
+---
 
-  <!-- Libraries -->
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg"
-       alt="numpy" width="40" height="40"/>
+##  What's Covered
 
-  <!-- Tools -->
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg"
-       alt="git" width="40" height="40"/>
+- 🤖 **AI Agent** with tools, memory, and GPT-4o (`langchain_agent/`)
+- 💬 **Chat LLM apps** using LangChain + Streamlit
+- 🔧 **Tool creation** and tool-calling workflows
+- 🦙 **Local LLM** experimentation via Ollama
+- 🔑 **Secure API key** usage via environment variables
+- 🧪 **Practice scripts** for understanding chains and agents
 
-  <!-- Editor -->
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"
-       alt="vscode" width="40" height="40"/>
-</p>
+---
 
-<h3 align="left">🧠 Concepts Practiced</h3>
-<ul>
-  <li>Prompt engineering</li>
-  <li>Chains and agents</li>
-  <li>Tool calling and function execution</li>
-  <li>Environment-based secret management</li>
-  <li>Local vs cloud LLM workflows</li>
-</ul>
+## 🛠️ AI Agent — Tools
 
-<h3 align="left">🚀 Purpose</h3>
-<p align="left">
-  This repository is purely for learning, experimentation, and skill-building with
-  LangChain and LLM ecosystems. It is not intended as a production-ready project,
-  but as a foundation for building more advanced agentic systems later.
-</p>
+Located in `langchain_agent/`. The agent automatically picks the right tool based on your question.
+
+| Tool | What it does |
+|------|-------------|
+| `calculator` | Safe math — `sqrt`, `sin`, `pi`, `**`, `log` |
+| `get_weather` | Live weather for any city (free, no key) |
+| `search_web` | DuckDuckGo web search |
+| `unit_converter` | km↔miles, kg↔lbs, °C↔°F, etc. |
+| `get_current_time` | Current UTC date and time |
+| `word_counter` | Words, characters, sentences, paragraphs |
+
+---
+
+## ⚙️ Setup
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/MKarthik730/langchain.git
+cd langchain
+```
+
+### 2. Install dependencies
+```bash
+pip install -r langchain_agent/requirements.txt
+```
+
+### 3. Set your API key
+Create a `.env` file in the root:
+```
+OPENAI_API_KEY=sk-your-key-here
+```
+
+### 4. Run the AI Agent
+```bash
+cd langchain_agent
+python test_tools.py   # test without API key first
+python agent.py        # start chatting
+```
+
+### 5. Run other scripts
+```bash
+python main.py
+python chatai.py       # Streamlit chat UI
+python test_ollama.py  # requires Ollama running locally
+```
+
+---
+
+## 🦙 Local LLM with Ollama
+
+To use `test_ollama.py`, install [Ollama](https://ollama.com) and pull a model:
+```bash
+ollama pull gemma3:4b
+ollama serve
+python test_ollama.py
+```
+
+---
+
+## 🧰 Tech Stack
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
+![LangChain](https://img.shields.io/badge/LangChain-latest-green)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-orange?logo=openai)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-red?logo=streamlit)
+![Ollama](https://img.shields.io/badge/Ollama-local%20LLM-black)
+
+---
+
+## 👤 Author
+
+**MKarthik730** — [github.com/MKarthik730](https://github.com/MKarthik730)
