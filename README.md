@@ -110,3 +110,6 @@ python test_ollama.py
 ## 👤 Author
 
 **MKarthik730** — [github.com/MKarthik730](https://github.com/MKarthik730)
+
+## 📌 Note
+Test without API key first using `python test_tools.py`
